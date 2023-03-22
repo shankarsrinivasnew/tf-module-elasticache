@@ -5,7 +5,7 @@ resource "aws_elasticache_cluster" "elasticacher" {
   node_type         = var.node_type
   num_cache_nodes   = var.num_cache_nodes
   port              = 6379
-  subnet_group_name = aws_elasticache_subnet_group.subgrpr
+  subnet_group_name = aws_elasticache_subnet_group.subgrpr.name
 
   tags = merge(
     var.tags,
