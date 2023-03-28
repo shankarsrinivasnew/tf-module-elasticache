@@ -23,3 +23,15 @@ resource "aws_elasticache_subnet_group" "subgrpr" {
   )
 }
 
+/* resource "aws_ssm_parameter" "redis_endpoint" {
+  name  = "${var.env}.redis_endpoint"
+  type  = "String"
+  value = aws_elasticache_cluster.elasticacher.id
+} */
+
+output "myelasticcacheout" {
+  value = aws_elasticache_cluster.elasticacher
+  
+}
+
+
