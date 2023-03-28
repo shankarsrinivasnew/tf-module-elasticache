@@ -1,11 +1,13 @@
 resource "aws_elasticache_cluster" "elasticacher" {
-  cluster_id        = "${var.env}-elasticache"
-  engine            = var.engine
-  engine_version    = var.engine_version
-  node_type         = var.node_type
-  num_cache_nodes   = var.num_cache_nodes
-  port              = 6379
-  subnet_group_name = aws_elasticache_subnet_group.subgrpr.name
+  cluster_id         = "${var.env}-elasticache"
+  engine             = var.engine
+  engine_version     = var.engine_version
+  node_type          = var.node_type
+  num_cache_nodes    = var.num_cache_nodes
+  port               = 6379
+  subnet_group_name  = aws_elasticache_subnet_group.subgrpr.name
+  security_group_ids = [aws_security_group.sgr.id]
+
 
   tags = merge(
     var.tags,
@@ -41,11 +43,11 @@ resource "aws_security_group" "sgr" {
   vpc_id      = var.vpc_id
 
   ingress {
-    description      = "elasricache port"
-    from_port        = 6379
-    to_port          = 6379
-    protocol         = "tcp"
-    cidr_blocks      = var.allow_db_to_subnets
+    description = "elasricache port"
+    from_port   = 6379
+    to_port     = 6379
+    protocol    = "tcp"
+    cidr_blocks = var.allow_db_to_subnets
   }
 
   egress {
@@ -57,7 +59,7 @@ resource "aws_security_group" "sgr" {
   }
 
   tags = merge(
-      var.tags,
-      { Name = "elasricache-${var.env}" }
-    )
+    var.tags,
+    { Name = "elasricache-${var.env}" }
+  )
 }
