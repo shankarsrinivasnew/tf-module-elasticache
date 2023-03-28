@@ -43,12 +43,12 @@ resource "aws_ssm_parameter" "elasticache_endpoint_cart" {
 } */
 
 resource "aws_security_group" "sgr" {
-  name        = "elasticache-${var.env}-sg"
-  description = "elasticache-${var.env}-sg"
+  name        = "elasricache-${var.env}-sg"
+  description = "elasricache-${var.env}-sg"
   vpc_id      = var.vpc_id
 
   ingress {
-    description = "elasticache port"
+    description = "elasricache port"
     from_port   = 6379
     to_port     = 6379
     protocol    = "tcp"
@@ -65,6 +65,6 @@ resource "aws_security_group" "sgr" {
 
   tags = merge(
     var.tags,
-    { Name = "elasticache-${var.env}" }
+    { Name = "elasricache-${var.env}" }
   )
 }
