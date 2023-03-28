@@ -29,7 +29,7 @@ resource "aws_elasticache_subnet_group" "subgrpr" {
   value = aws_elasticache_cluster.elasticacher.id
 } */
 
-output "myelasticcacheout" {
+output "myelasticacheout" {
   value = aws_elasticache_cluster.elasticacher
   
 }
