@@ -23,3 +23,7 @@ variable "node_type" {
 variable "num_cache_nodes" {
 
 }
+
+variable "allow_db_to_subnets" {
+  
+}
