@@ -25,12 +25,17 @@ resource "aws_elasticache_subnet_group" "subgrpr" {
   )
 }
 
-resource "aws_ssm_parameter" "redis_endpoint" {
-  name  = "${var.env}.elasticache_endpoint"
+resource "aws_ssm_parameter" "elasticache_endpoint_user" {
+  name  = "${var.env}.elasticache_endpoint_user"
   type  = "String"
   value = aws_elasticache_cluster.elasticacher.cache_nodes[0].address
 }
 
+resource "aws_ssm_parameter" "elasticache_endpoint_cart" {
+  name  = "${var.env}.elasticache_endpoint_cart"
+  type  = "String"
+  value = aws_elasticache_cluster.elasticacher.cache_nodes[0].address
+}
 
 /* output "myelasticacheout" {
   value = aws_elasticache_cluster.elasticacher
